@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This is FRONTEND</title>
+    <title>Profile editor</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
@@ -12,75 +16,81 @@
 </head>
 <body>
     <div id="root">
-        <h1>Profile editor</h1>
-        <div class="personal-data content-box">
-            <div class="cover">
-                <header>Personal data</header>
-                <img src="\images\covers\cover.jpg" alt="" class="cover-photo">
-            </div>
-            <form action="" id="profile-form">
-                <div class="profile-photo">
-                    <img src="" alt="" class="profile-photo">
-                    <button class="change-photo">Change profile photo</button>
-                </div>
-                <div class="input-data-elements">
-                    <div class="first-name input-data">
-                        <p>
-                            <label for="first-name">First name</label>
-                        </p>
-                        <input type="text" placeholder="Szilvia Ágnes" id="last-name">
+        <form action="" id="profile-form">
+            <div class="left-content">
+                <h1>Profile editor</h1>
+                <div class="introduction content-box">
+                    <div class="cover">
+                        <h2>Introduction</h2>
+                        <!-- <img src="\images\covers\cover.jpg" alt="" class="cover-photo"> -->
                     </div>
-                    <div class="last-name input-data">
+                    <div class="introduction input-data">
                         <p>
-                            <label for="last-name">Last name</label>
+                            <label for="introduction">Introduction</label>
                         </p>
-                        <input type="text" placeholder="Tóth" id="last-name">
-                    </div>
-                    <div class="street-address input-data">
-                        <p>
-                            <label for="street-address">Street address</label>
-                        </p>
-                        <input type="text" placeholder="53 Bartók Béla road" id="street-address">
-                    </div>
-                    <div class="zip-code input-data">
-                        <p>
-                            <label for="zip-code">Zip code</label>
-                        </p>
-                        <input type="text" placeholder="1114" id="zip-code">
-                    </div>
-                    <div class="city-town input-data">
-                        <p>
-                            <label for="city-town">City / town</label>
-                        </p>
-                        <input type="text" placeholder="Budapest" id="city-town">
-                    </div>
-                    <div class="country-state input-data">
-                        <p>
-                            <label for="country-state">Country / state</label>
-                        </p>
-                        <input type="text" placeholder="Hungary" id="country-state">
+                        <textarea rows="10" cols="50" name="introduction" form="profile-form" id="introduction">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ullam, nesciunt possimus magnam veniam eos iure doloribus maiores cumque temporibus recusandae ipsa qui rerum cupiditate. Nobis sint possimus ab id.
+                        Amet rem ullam maiores. Quaerat rem vel sint eius tempora sed, possimus veritatis nemo eos laboriosam atque voluptatem? Est soluta ducimus consequuntur consectetur veritatis? Laudantium dolores quidem sequi voluptatum minima.
+                        Tempore voluptatum doloribus id fugiat totam autem possimus, temporibus laboriosam, numquam odit architecto perferendis nesciunt, ea illum nam eius esse ullam dolores expedita praesentium reprehenderit magnam corrupti. Ut, possimus eum.
+                        Officia id blanditiis saepe nam labore eligendi, porro reprehenderit sunt quia autem assumenda, facilis, commodi ipsum? Quae fugit qui laborum dolor mollitia sapiente soluta ea! Eaque mollitia deleniti doloribus corporis! </textarea>
                     </div>
                 </div>
-            </form>
-        </div>
-        <div class="introduction-editor content-box">
-            <div class="cover">
-                <header>Introduction</header>
-                <img src="images\profiles\profile.jpg" alt="" class="profile-photo">
             </div>
-            <div class="introduction input-data">
-                <p>
-                    <label for="introduction">Introduction</label>
-                </p>
-                <textarea rows="10" cols="50" name="introduction" form="profile-form" id="introduction">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ullam, nesciunt possimus magnam veniam eos iure doloribus maiores cumque temporibus recusandae ipsa qui rerum cupiditate. Nobis sint possimus ab id.
-                Amet rem ullam maiores. Quaerat rem vel sint eius tempora sed, possimus veritatis nemo eos laboriosam atque voluptatem? Est soluta ducimus consequuntur consectetur veritatis? Laudantium dolores quidem sequi voluptatum minima.
-                Tempore voluptatum doloribus id fugiat totam autem possimus, temporibus laboriosam, numquam odit architecto perferendis nesciunt, ea illum nam eius esse ullam dolores expedita praesentium reprehenderit magnam corrupti. Ut, possimus eum.
-                Officia id blanditiis saepe nam labore eligendi, porro reprehenderit sunt quia autem assumenda, facilis, commodi ipsum? Quae fugit qui laborum dolor mollitia sapiente soluta ea! Eaque mollitia deleniti doloribus corporis! </textarea>
+            <div class="right-content personal-data content-box">
+                <div class="cover">
+                    <h2>Personal data</h2>
+                    <!-- <img src="\images\covers\cover.jpg" alt="" class="cover-photo"> -->
+                </div>
+                <div class="personal-data">
+                    <div class="profile-photo">
+                        <img src="images\profiles\profile.jpg" alt="" class="profile-photo">
+                        <button class="change-photo">Change profile photo</button>
+                    </div>
+                    <div class="input-data-elements">
+                        <div class="first-name input-data">
+                            <p>
+                                <label for="first-name">First name</label>
+                            </p>
+                            <input type="text" placeholder="Szilvia Ágnes" id="last-name">
+                        </div>
+                        <div class="last-name input-data">
+                            <p>
+                                <label for="last-name">Last name</label>
+                            </p>
+                            <input type="text" placeholder="Tóth" id="last-name">
+                        </div>
+                        <div class="street-address input-data">
+                            <p>
+                                <label for="street-address">Street address</label>
+                            </p>
+                            <input type="text" placeholder="53 Bartók Béla road" id="street-address">
+                        </div>
+                        <div class="zip-code input-data">
+                            <p>
+                                <label for="zip-code">Zip code</label>
+                            </p>
+                            <input type="text" placeholder="1114" id="zip-code">
+                        </div>
+                        <div class="city-town input-data">
+                            <p>
+                                <label for="city-town">City / town</label>
+                            </p>
+                            <input type="text" placeholder="Budapest" id="city-town">
+                        </div>
+                        <div class="country-state input-data">
+                            <p>
+                                <label for="country-state">Country / state</label>
+                            </p>
+                            <input type="text" placeholder="Hungary" id="country-state">
+                        </div>
+                    </div>
+                </div>
             </div>
+        </form>
+        <div class="action-buttons">
+            <button class="delete">save</button>
+            <!-- <input type="submit" value="Save"> -->
+            <button class="save">delete</button>
         </div>
-        <button class="delete">save</button>
-        <!-- <input type="submit" value="Save"> -->
-        <button class="save">delete</button>
     </div>
 </body>
 </html>

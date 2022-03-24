@@ -1,0 +1,162 @@
+body{
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url(/images/covers/cover.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+}
+
+#root{
+    /* position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    /* width: 1000px;
+    height: 9000px; */
+    
+    width: 100%;
+    height: 100%;
+}
+
+#profile-form{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 1000px;
+    height: 600px;
+    
+    display: flex;
+    gap: 60px;
+}
+
+#profile-form .left-content{
+    flex-basis:  calc(50% - 30px);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#profile-form div.content-box{
+    background-color: #ffffff;
+}
+
+#profile-form .left-content h1{
+    font-size: 75px;
+    font-weight: 600;
+    color: rgb(1, 41, 28,0.75);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#profile-form .left-content .introduction{
+    flex-grow: 1;
+    background-color: #ffffff;
+}
+
+#profile-form div.right-content.personal-data{
+    flex-basis:  calc(50% - 30px);
+    height: 100%;
+    background-color: #ffffff;
+}
+
+#root div.content-box img.profile-photo{
+    width: 130px;
+    height: 130px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+#root div.action-buttons{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40px;
+
+    display: flex;
+    gap: 40px;
+}
+
+#root div.action-buttons button{
+    width: 250px;
+    height: 60px;
+    border-radius: 10px;
+    filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.75));
+    text-transform: uppercase;
+}
+
+#root div.action-buttons button.delete{
+    background-color: #ffffff;
+}
+
+#root div.action-buttons button.save{
+    background-color: #006F49;
+    color:#ffffff;
+}
+
+/*  -----------------=============77777777777-------------------- */
+
+@media screen and (max-width: 1400px) {
+    #profile-form{
+        width: 800px;
+        height: 480px;
+        background-color: blue;
+    } 
+
+    #profile-form .left-content{
+        display: inline;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: calc(50% - 20px);
+
+        height: 100%;
+    }
+
+    #profile-form .left-content h1{
+        font-size: 60px;
+        height: 80px;
+        font-weight: 600;
+    }
+
+    #profile-form .left-content div.introduction{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        height: 380px;
+    }
+
+    #profile-form div.right-content.personal-data{
+        display: inline;
+        position: absolute;
+        top: 0;
+        left: calc(50% + 20px);
+
+        width: calc(50% - 20px);
+        height: 100%;
+        background-color: rebeccapurple;
+    }
+
+    #root div.action-buttons{
+        bottom: 10px;
+    
+        display: flex;
+        gap: 20px;
+    }
+    
+    #root div.action-buttons button{
+        width: 100px;
+        height: 40px;
+        border-radius: 5px;
+        filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.75));
+        text-transform: uppercase;
+    }
+}
