@@ -86,18 +86,22 @@ body{
 #root div.action-buttons button{
     width: 250px;
     height: 60px;
+
     border-radius: 10px;
     filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.75));
+
     text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 #root div.action-buttons button.delete{
-    background-color: #ffffff;
+    background-color: #006F49;
+    color:#ffffff;
 }
 
 #root div.action-buttons button.save{
-    background-color: #006F49;
-    color:#ffffff;
+    background-color: #ffffff;
 }
 
 /*  -----------------=============77777777777-------------------- */
@@ -105,8 +109,12 @@ body{
 @media screen and (max-width: 1400px) {
     #profile-form{
         width: 800px;
-        height: 480px;
-        background-color: blue;
+        height: 460px;
+
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* background-color: blue; */
     } 
 
     #profile-form .left-content{
@@ -121,7 +129,7 @@ body{
     }
 
     #profile-form .left-content h1{
-        font-size: 60px;
+        font-size: 45px;
         height: 80px;
         font-weight: 600;
     }
@@ -131,7 +139,7 @@ body{
         bottom: 0;
         left: 0;
 
-        height: 380px;
+        height: 350px;
     }
 
     #profile-form div.right-content.personal-data{
@@ -142,20 +150,22 @@ body{
 
         width: calc(50% - 20px);
         height: 100%;
-        background-color: rebeccapurple;
+        /* background-color: rebeccapurple; */
     }
 
     #root div.action-buttons{
-        bottom: 10px;
+        bottom: 20px;
     
         display: flex;
-        gap: 20px;
+        gap: 15px;
     }
     
     #root div.action-buttons button{
         width: 100px;
-        height: 40px;
+        height: 30px;
         border-radius: 5px;
+
+        font-size: 12px;
         filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.75));
         text-transform: uppercase;
     }
