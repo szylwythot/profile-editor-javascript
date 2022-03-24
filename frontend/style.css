@@ -67,8 +67,14 @@ body{
     text-align: center;
 }
 
-#profile-form .left-content{
+/* #profile-form div.content-box .input-data{
+    width: 100%;
+    height: 100%;
+
     flex-basis:  calc(50% - 30px);
+} */
+
+#profile-form .left-content{
     height: 100%;
 
     display: flex;
@@ -90,24 +96,86 @@ body{
     width: 100%;
 }
 
-#profile-form .left-content .introduction-box{
+#profile-form .left-content .introduction-box .introduction-data{
+    position: absolute;
+    top: 140px;
+    left: 0;
 
+    width: 100%;
+    height: calc(100% - 140px);
+
+    padding: 15px;
 }
 
-#profile-form div.right-content.personal-data{
-    flex-basis:  calc(50% - 30px);
+#profile-form .left-content .introduction-box .introduction-data p{
+    width: 100%;
+    height: 20px;
+
+    font-size: 16px;
+}
+
+#profile-form .left-content .introduction-box .introduction-data textarea{
+    width: 100%;
+    height: calc(100% - 20px);
+    border: solid;
+    padding-top: 10px;
+
+    align-content:center; 
+    overflow:auto; 
+    /* border: 1px outset red; */
+}
+
+/* #profile-form div.right-content.personal-box{
     height: 100%;
     background-color: #ffffff;
 
     display: flex;
     flex-direction: column;
-}
+} */
 
-#root div.content-box img.profile-photo{
+#profile-form div.right-content.personal-box div.personal-data .profile-photo{
     width: 130px;
     height: 130px;
     border-radius: 15px;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 95px;
+}
+
+#profile-form div.right-content.personal-box div.personal-data .profile-photo img{
+    position: absolute;
     object-fit: cover;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 15px;
+}
+
+#profile-form div.right-content.personal-box div.personal-data .profile-photo button{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    
+    background-color: rgb(97, 99, 101,0.8);
+
+    height: 20px;
+    width: 100%;
+    
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 500;
+    font-size: 8px;
+}
+
+
+#root div.content-box .input-data-elements{
+
 }
 
 #root div.action-buttons{
@@ -181,8 +249,8 @@ body{
         flex-direction: column;
     }
 
-    #profile-form div.right-content.personal-data{
-        display: inline;
+    #profile-form div.right-content.personal-box{
+        /* display: inline; */
         position: absolute;
         top: 0;
         left: calc(50% + 20px);
@@ -195,6 +263,48 @@ body{
         height: 100px;
         width: 100%;
     }
+
+    #profile-form div.content-box div.cover h2{
+        height: 40px;
+        width: 100%;
+
+        font-size: 16px;
+    }
+
+    #profile-form .left-content .introduction-box .introduction-data{
+        height: calc(100% - 100px);
+        top: 100px;
+    }
+
+
+    #profile-form div.right-content.personal-box div.personal-data .profile-photo{
+        width: 100px;
+        height: 100px;
+
+        border-radius: 10px;
+
+        top: 70px;
+    }
+
+    #profile-form div.right-content.personal-box div.personal-data .profile-photo img{
+        border-radius: 6px;
+    }
+
+    #profile-form div.right-content.personal-box div.personal-data .profile-photo button{
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    #profile-form div.right-content.personal-box div.personal-data div.input-data-elements{
+        width: 100%;
+        height: calc(100% - 170px);
+
+        position: absolute;
+        top:170px;
+        left: 0;
+    }
+
+
 
     #root div.action-buttons{
         bottom: 20px;
