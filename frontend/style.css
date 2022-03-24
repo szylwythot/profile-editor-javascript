@@ -35,6 +35,11 @@ body{
     gap: 60px;
 }
 
+#profile-form div.content-box{
+    background-color: #ffffff;
+    flex-grow:1  ;
+}
+
 #profile-form .left-content{
     flex-basis:  calc(50% - 30px);
     height: 100%;
@@ -43,9 +48,6 @@ body{
     flex-direction: column;
 }
 
-#profile-form div.content-box{
-    background-color: #ffffff;
-}
 
 #profile-form .left-content h1{
     font-size: 75px;
@@ -64,6 +66,36 @@ body{
     flex-basis:  calc(50% - 30px);
     height: 100%;
     background-color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#profile-form div.content-box div.cover{
+    z-index: 99;
+
+    background-image: url(/images/covers/cover.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100%;
+    height: 140px;
+}
+
+#profile-form div.content-box div.cover h2{
+    background-color: rgb(1, 41, 28,0.65);
+
+    width: 100%;
+    height: 50px;
+    z-index: 99;
+
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    
+    /* line-height: 0; */
+    /* padding-bottom: 10px; */
 }
 
 #root div.content-box img.profile-photo{
@@ -118,7 +150,7 @@ body{
     } 
 
     #profile-form .left-content{
-        display: inline;
+        display: flex;
         position: absolute;
         top: 0;
         left: 0;
@@ -138,8 +170,10 @@ body{
         position: absolute;
         bottom: 0;
         left: 0;
-
         height: 350px;
+
+        display: flex;
+        flex-direction: column;
     }
 
     #profile-form div.right-content.personal-data{
@@ -150,7 +184,11 @@ body{
 
         width: calc(50% - 20px);
         height: 100%;
-        /* background-color: rebeccapurple; */
+    }
+
+    #profile-form div.content-box div.cover{
+        height: 100px;
+        width: 100%;
     }
 
     #root div.action-buttons{
