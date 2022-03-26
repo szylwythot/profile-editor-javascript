@@ -66,6 +66,7 @@ const profilePhoto = function () {
 
 const textareaContent = (contentTitle) => {
     return `
+    <div class="${contentTitle} input-data">
         <p>
             <label for="${contentTitle}">${makeCapital(contentTitle)}</label>
         </p>
@@ -73,6 +74,7 @@ const textareaContent = (contentTitle) => {
         <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ullam, nesciunt possimus magnam veniam eos iure doloribus maiores cumque temporibus recusandae ipsa qui rerum cupiditate. Nobis sint possimus ab id. Amet rem ullam maiores. Quaerat rem vel sint eius tempora sed, possimus veritatis nemo eos laboriosam atque voluptatem? Est soluta ducimus consequuntur consectetur veritatis? Laudantium dolores quidem sequi voluptatum minima.
         </textarea>
+    </div>
     `;
 }
 
@@ -83,8 +85,8 @@ function loadEvent(){
         ${rightContent()}
     </form>
     <div class="action-buttons">
-        <button class="save">delete</button>
-        <button class="delete">save</button>
+        <button class="save">Delete</button>
+        <button class="delete">Save</button>
         <!-- <input type="submit" value="Save"> -->
     </div>
     `;

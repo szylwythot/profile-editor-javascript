@@ -55,7 +55,7 @@ body{
 }
 
 #profile-form div.content-box div.cover h2{
-    background-color: rgb(1, 41, 28,0.65);
+    background-color: rgb(1, 41, 28, 0.65);
 
     width: 100%;
     height: 50px;
@@ -96,42 +96,63 @@ body{
     width: 100%;
 }
 
-#profile-form .left-content .introduction-box .introduction-data-container{
+#profile-form .left-content .introduction-box .introduction-data-container {
     position: absolute;
     top: 140px;
     left: 0;
 
     width: 100%;
-    height: calc(100% - 140px);
+    height: calc(100% - 150px);
 
     padding: 15px;
 }
 
-#profile-form .left-content .introduction-box .introduction-data-container p{
-    width: 100%;
+#profile-form div.content-box div.input-data-container .input-data{
+}
+
+#profile-form div.content-box div.input-data-container .input-data label{
     height: 20px;
 
+    padding-left: 5px;
+
     font-size: 16px;
+    font-weight: 600;
+    color: #006F49;
 }
 
-#profile-form .left-content .introduction-box .introduction-data-container textarea{
+#profile-form div.content-box div.input-data-container .input-data input,
+#profile-form div.content-box div.input-data-container .input-data textarea{
+    width: 100%;
+
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.75);
+}
+
+#profile-form .left-content .introduction-box .introduction-data-container .input-data{
+    width: 100%;
+    height: 100%;
+}
+
+#profile-form div.content-box div.input-data-container .input-data textarea{
     width: 100%;
     height: calc(100% - 20px);
-    border: solid;
-    padding-top: 10px;
+    /* padding-top: 10px; */
 
     align-content:center; 
-    overflow:auto; 
-    /* border: 1px outset red; */
+    overflow:auto;
 }
 
-/* #profile-form div.right-content.personal-box{
+#profile-form div.right-content.personal-box{
+    width: 100%;
     height: 100%;
-    background-color: #ffffff;
+}
 
-    display: flex;
-    flex-direction: column;
-} */
+#profile-form div.right-content.personal-box div.input-data-container .input-data{
+    width: 200px;
+    height: 60px;
+}
 
 #profile-form div.right-content.personal-box .profile-photo{
     width: 130px;
@@ -173,15 +194,21 @@ body{
     font-size: 8px;
 }
 
-#profile-form div.right-content.personal-box{
-    width: 100%;
-    height: 100%;
-}
-
 #profile-form div.right-content.personal-box div.personal-data-container{
     position: absolute;
     top: 225px;
     left: 0;
+
+    width: calc(100% - 20px);
+    height: calc(100% - 190px);
+
+    display: grid;
+    grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+    grid-template-rows: calc(33.3%-7px) calc(33.3%-7px) calc(33.3%-7px);
+    grid-row: auto auto;
+    grid-gap: 10px;
+
+    padding: 10px;
 }
 
 #root div.action-buttons{
@@ -201,7 +228,6 @@ body{
     border-radius: 10px;
     filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.75));
 
-    text-transform: uppercase;
     font-size: 18px;
     font-weight: 500;
 }
@@ -225,7 +251,6 @@ body{
         top: 45%;
         left: 50%;
         transform: translate(-50%, -50%);
-        /* background-color: blue; */
     } 
 
     #profile-form .left-content{
@@ -235,7 +260,6 @@ body{
         left: 0;
 
         width: calc(50% - 20px);
-
         height: 100%;
     }
 
@@ -314,27 +338,33 @@ body{
         grid-gap: 10px;
 
         padding: 10px;
-        /* margin: 10px; */
-        /* border:solid; */
-        background-color: #006F49;
     }
 
-    #profile-form div.right-content.personal-box div.personal-data-container .input-data{
-        /* background-color: RED; */
-        border: solid 1px;
+    #profile-form div.content-box div.input-data-container .input-data{
     }
 
-    #profile-form div.right-content.personal-box div.personal-data-container .input-data label{
+    #profile-form div.right-content.personal-box div.input-data-container .input-data{
+        width: 150px;
+        height: 60px;
+    }
+
+    #profile-form div.content-box div.input-data-container .input-data label{
         height: 20px;
+
+        padding-left: 5px;
+
         font-size: 16px;
-        font-weight: 600;
-        /* padding-left: 5px; */
-        /* background-color: yellow; */
     }
 
-    #profile-form div.right-content.personal-box div.personal-data-container .input-data input{
-        background-color: white;
-        border: solid;
+    #profile-form div.content-box div.input-data-container .input-data input,
+    #profile-form div.content-box div.input-data-container .input-data textarea{
+        border-radius: 5px;
+        padding: 5px;
+        margin-top: 5px;
+    }
+
+    #profile-form div.content-box div.input-data-container .input-data textarea{
+        padding: 7px;
     }
 
     #root div.action-buttons{
@@ -343,12 +373,11 @@ body{
     }
     
     #root div.action-buttons button{
-        width: 100px;
-        height: 30px;
-        border-radius: 5px;
+        width: 120px;
+        height: 40px;
+        border-radius: 10px;
 
         font-size: 12px;
         filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.75));
-        text-transform: uppercase;
     }
 }
