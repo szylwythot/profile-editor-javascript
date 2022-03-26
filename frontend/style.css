@@ -256,7 +256,6 @@ body{
     }
 
     #profile-form div.right-content.personal-box{
-        /* display: inline; */
         position: absolute;
         top: 0;
         left: calc(50% + 20px);
@@ -310,7 +309,6 @@ body{
 
         display: grid;
         grid-template-columns: calc(50% - 5px) calc(50% - 5px);
-        /* grid-template-rows: calc(40% - 5px) calc(33.3%-7px) calc(33.3%-7px); */
         grid-template-rows: calc(33.3%-7px) calc(33.3%-7px) calc(33.3%-7px);
         grid-row: auto auto;
         grid-gap: 10px;
@@ -339,11 +337,9 @@ body{
         border: solid;
     }
 
-    #profile-form div.action-buttons{
+    #root div.action-buttons{
         bottom: 20px;
-    
-        display: flex;
-        gap: 10px;
+        gap: 20px;
     }
     
     #root div.action-buttons button{
