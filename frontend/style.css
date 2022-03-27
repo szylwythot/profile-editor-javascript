@@ -52,6 +52,12 @@ body{
 
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    /* box-shadow: 2px 2px 3px #01291C;  */
+    /* 2px 2px 6px #E5E5E5; */
+    box-shadow: 1px 2px 3px 3px #E5E5E5;
+
+    border-radius: 0px 0px 30px 30px;
 }
 
 #profile-form div.content-box div.cover h2{
@@ -61,11 +67,22 @@ body{
     height: 50px;
     z-index: 99;
 
+    padding-top: 20px;
+    line-height: 0;
+    
     color: #ffffff;
     font-size: 20px;
     font-weight: 500;
     text-align: center;
 }
+
+#profile-form div.content-box.right-content div.cover{
+    height: 140px;
+}
+
+/* #profile-form div.content-box.right-content div.cover h2{
+    height: 60px;
+} */
 
 /* #profile-form div.content-box .input-data-container{
     width: 100%;
@@ -127,7 +144,8 @@ body{
     margin-top: 10px;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.75);
+    /* box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.75); */
+    box-shadow: 1px 2px 3px 3px #E5E5E5;
 }
 
 #profile-form .left-content .introduction-box .introduction-data-container .input-data{
@@ -173,6 +191,7 @@ body{
     height: 100%;
 
     border-radius: 15px;
+    filter: drop-shadow(2px 2px 3px #01291C);
 }
 
 #profile-form div.right-content.personal-box .profile-photo button{
@@ -358,7 +377,7 @@ body{
 
     #profile-form div.content-box div.input-data-container .input-data input,
     #profile-form div.content-box div.input-data-container .input-data textarea{
-        border-radius: 5px;
+        border-radius: 3px;
         padding: 5px;
         margin-top: 5px;
     }
