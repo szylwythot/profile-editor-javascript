@@ -194,23 +194,34 @@ body{
     filter: drop-shadow(2px 2px 3px #01291C);
 }
 
-#profile-form div.right-content.personal-box .profile-photo button{
+#profile-form div.right-content.personal-box .profile-photo label.change-photo-label{
     position: absolute;
     left: 0;
     bottom: 0;
     
     background-color: rgb(97, 99, 101,0.8);
 
-    height: 20px;
+    height: 22px;
     width: 100%;
     
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 
+    /* center text of label */
+    text-align: center;
+    line-height: 0;
+    padding-top: 7px;
+
     color: #ffffff;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 500;
-    font-size: 8px;
+
+    cursor: pointer;
+}
+
+#profile-form div.right-content.personal-box .profile-photo input[type="file"] {
+    position: absolute;
+    display: none;
 }
 
 #profile-form div.right-content.personal-box div.personal-data-container{
@@ -325,10 +336,10 @@ body{
     }
 
     #profile-form div.right-content.personal-box .profile-photo{
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
 
-        border-radius: 10px;
+        border-radius: 6px;
 
         top: 70px;
     }
@@ -337,7 +348,7 @@ body{
         border-radius: 6px;
     }
 
-    #profile-form div.right-content.personal-box .profile-photo button{
+    #profile-form div.right-content.personal-box .profile-photo label.change-photo-label{
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
     }

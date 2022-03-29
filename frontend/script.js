@@ -59,10 +59,13 @@ const profilePhoto = function () {
     return `
     <div class="profile-photo">
         <img src="images/profiles/profile.jpg" alt="" >
-        <button class="change-photo">Change profile photo</button>
-    </div>
-    `;
-}
+        <label for="change-photo" class="change-photo-label">
+            <i class="fa fa-cloud-upload"></i> Change profile photo
+        </label>
+        <input id="change-photo" type="file"/>
+        </div>
+        `;
+    }//<button class="change-photo">Change profile photo</button>
 
 const textareaContent = (contentTitle) => {
     return `
