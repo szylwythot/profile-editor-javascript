@@ -1,3 +1,8 @@
+// helping functions
+function makeCapital(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 function TextData(title, label, placeholder){
     this.title = title;
     this.label = label;
@@ -58,7 +63,7 @@ const contentBox = (contentTitle, inputDataFun, additionalClassName, additionalH
 const profilePhoto = function () {
     return `
     <div class="profile-photo">
-        <img src="images/profiles/profile.jpg" alt="" >
+        <img src="/pub/images/profiles/profile.jpg" alt="" >
         <label for="change-photo" class="change-photo-label">
             <i class="fa fa-cloud-upload"></i> Change profile photo
         </label>
@@ -99,8 +104,3 @@ function loadEvent(){
 }
 
 window.addEventListener("load", loadEvent);
-
-// helping functions
-function makeCapital(text) {
-    return text.charAt(0).toUpperCase() + text.slice(1);
-}

@@ -1,5 +1,4 @@
 const errorHTML = `
-		
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +31,6 @@ const errorHTML = `
     <div id="root">Rise your gaze to the sky<br/>than a bit back to the URL bar<br/>and check that link again</div>
 </body>
 </html>
-
 `;
 
 const express = require("express");
@@ -53,25 +51,25 @@ app.use("/upload", express.static(`${__dirname}/../frontend/upload`));
 
 console.log("start");
 
-const uploads = path.join(`${__dirname}/../frontend/upload/`);
+// const uploads = path.join(`${__dirname}/../frontend/upload/`);
 
-app.post('/', function(request, response) {
-    let picture = request.files.picture;
-    const answer = {};
-    if(picture){
-        console.dir(picture);
-        picture.mv(`${uploads}profile.jpg`); //${picture.name}`);
-    }
+// app.post('/', function(request, response) {
+//     let picture = request.files.picture;
+//     const answer = {};
+//     if(picture){
+//         console.dir(picture);
+//         picture.mv(`${uploads}profile.jpg`); //${picture.name}`);
+//     }
     
-    answer.pictureName = "profile.jpg"; //picture.name;
-    console.log("start upload");
-    console.log(request.files.picture);
+//     answer.pictureName = "profile.jpg"; //picture.name;
+//     console.log("start upload");
+//     console.log(request.files.picture);
 
-    response.send(answer); // itt megy át a response a frontendre!
-  });
+//     response.send(answer); // itt megy át a response a frontendre!
+//   });
 
-const port = 9000;
-const ipAddress = `http://127.0.0.1:${port}`
+const port = 9004;
+const ipAddress = `http://127.0.0.4:${port}`
 app.listen(port, () => {
     console.log(ipAddress)
 });

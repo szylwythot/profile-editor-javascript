@@ -2,7 +2,7 @@ body{
     width: 100vw;
     height: 100vh;
 
-    background-image: url(/images/covers/cover.jpg);
+    background-image: url(images/covers/cover.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -43,7 +43,7 @@ body{
 #profile-form div.content-box div.cover{
     z-index: 99;
 
-    background-image: url(/images/covers/cover.jpg);
+    background-image: url(/pub/images/covers/cover.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 
