@@ -1,3 +1,5 @@
+let rootElement;
+
 // helping functions
 function makeCapital(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
@@ -86,7 +88,27 @@ const textareaContent = (contentTitle) => {
     `;
 }
 
+// eventhandlers
+function photoChangeEventHandler(event){
+    const imageInput = event.target;
+    const imageFile = imageInput.files[0];
+    console.log(imageFile);
+
+    const postData = { // Your POST endpoint
+        method: 'POST',
+        // headers: {
+        //   // Content-Type may need to be completely **omitted**
+        //   // or you may need something
+        //   "Content-Type": "You will perhaps need to define a content-type here"
+        // },
+        body: imageFile // This is your file object
+      };
+
+    fetch('/upload', postData);
+}
+
 function loadEvent(){
+    rootElement = document.getElementById("root");
     let innerHtml = `
     <form action="" id="profile-form">
         ${leftContent()}
@@ -99,8 +121,10 @@ function loadEvent(){
     </div>
     `;
 
-    const rootElement = document.getElementById("root");
     rootElement.insertAdjacentHTML(`beforeend`, innerHtml);
+
+    const fileUpload = document.getElementById("change-photo");
+    fileUpload.addEventListener(`change`, photoChangeEventHandler)
 }
 
 window.addEventListener("load", loadEvent);
