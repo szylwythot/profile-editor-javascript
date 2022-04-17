@@ -48,15 +48,17 @@ app.post('/upload', function(request, response) {
 
 app.post('/save', function(request, response) {
     console.log("got request save");
+    let profileData = JSON.stringify(request.body);
+    console.log(profileData);
 
-    fs.writeFile(profileJson, JSON.stringify(request.body), error => {
+    fs.writeFile(profileJson, profileData, error => {
         if(error) {
             console.log(error);
             res.send("Error writing pizza file.");
         }
     });
 
-    response.sendFile(`${backendPath}/data/profile.json`); // itt megy át a response a frontendre!
+    response.send(`succeed`); // itt megy át a response a frontendre!
 });
 
 

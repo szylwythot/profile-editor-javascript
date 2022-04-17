@@ -15,7 +15,7 @@ function TextData(title, label, placeholder){
             <p>
                 <label for="${this.title}">${this.label}</label>
             </p>
-            <input type="text" placeholder="${this.placeholder}" id="${this.title}">
+            <input type="text" placeholder="${this.placeholder}" id="${this.title}" name="${this.title}">
         </div>
         `;
     }
@@ -81,8 +81,7 @@ const textareaContent = (contentTitle) => {
             <label for="${contentTitle}">${makeCapital(contentTitle)}</label>
         </p>
         <!-- rows="10" cols="50" -->
-        <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ullam, nesciunt possimus magnam veniam eos iure doloribus maiores cumque temporibus recusandae ipsa qui rerum cupiditate. Nobis sint possimus ab id. Amet rem ullam maiores. Quaerat rem vel sint eius tempora sed, possimus veritatis nemo eos laboriosam atque voluptatem? Est soluta ducimus consequuntur consectetur veritatis? Laudantium dolores quidem sequi voluptatum minima.
+        <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ullam, nesciunt possimus magnam veniam eos iure doloribus maiores cumque temporibus recusandae ipsa qui rerum cupiditate. Nobis sint possimus ab id. Amet rem ullam maiores. Quaerat rem vel sint eius tempora sed, possimus veritatis nemo eos laboriosam atque voluptatem? Est soluta ducimus consequuntur consectetur veritatis? Laudantium dolores quidem sequi voluptatum minima.
         </textarea>
     </div>
     `;
