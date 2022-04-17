@@ -194,7 +194,7 @@ body{
     filter: drop-shadow(2px 2px 3px #01291C);
 }
 
-#profile-form div.right-content.personal-box .profile-photo label.change-photo-label{
+#profile-form div.right-content.personal-box .profile-photo label.profile-photo-label{
     position: absolute;
     left: 0;
     bottom: 0;
@@ -348,7 +348,7 @@ body{
         border-radius: 6px;
     }
 
-    #profile-form div.right-content.personal-box .profile-photo label.change-photo-label{
+    #profile-form div.right-content.personal-box .profile-photo label.profile-photo-label{
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
     }
