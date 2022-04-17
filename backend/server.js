@@ -6,17 +6,14 @@ const fs = require("fs");
 const path = require("path");
 const app = express();
 
-const frondendPath = path.join(`${__dirname}/../frontend/`);
-
-function getFunction(request, response){
-  response.sendFile(`${frondendPath}index.html`);
-}
+const frondendPath = path.join(`${__dirname}/../frontend`);
 
 app.use(fileUpload());
 
-app.get("/", getFunction);
-app.use("/pub", express.static(`${__dirname}/../frontend/public`));
-app.use("/upload", express.static(`${__dirname}/../frontend/upload`));
+app.get("/", (request, response) => response.sendFile(`${frondendPath}/index.html`));
+
+app.use("/pub", express.static(`${frondendPath}/public`));
+app.use("/upload", express.static(`${frondendPath}/upload`));
 
 console.log("start");
 
@@ -34,9 +31,9 @@ app.post('/upload', function(request, response) {
         
         //     console.log(`${dir} is deleted!`);
         // });
-        // fs.unlinkSync(`${frondendPath}upload/${pictureName}`);
+        // fs.unlinkSync(`${frondendPath}/upload/${pictureName}`);
         // pictureName = `profile${counter++}.jpg`;
-        picture.mv(`${frondendPath}upload/${pictureName}`); //${picture.name}`);
+        picture.mv(`${frondendPath}/upload/${pictureName}`); //${picture.name}`);
     }
     
     answer.pictureName = pictureName; //picture.name;
