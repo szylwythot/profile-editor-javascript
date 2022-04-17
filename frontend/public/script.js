@@ -66,13 +66,13 @@ const profilePhoto = function () {
     return `
     <div class="profile-photo">
         <img src="/pub/images/profiles/profile.jpg" class="profile-photo-img">
-        <label for="change-photo" class="change-photo-label">
+        <label for="profile-photo" class="profile-photo-label">
             <i class="fa fa-cloud-upload"></i> Change profile photo
         </label>
-        <input id="change-photo" type="file"/>
+        <input id="profile-photo" type="file"/>
         </div>
         `;
-    }//<button class="change-photo">Change profile photo</button>
+    }
 
 const textareaContent = (contentTitle) => {
     return `
@@ -147,7 +147,7 @@ function loadEvent(){
 
     rootElement.insertAdjacentHTML(`beforeend`, innerHtml);
 
-    const fileUpload = document.getElementById("change-photo");
+    const fileUpload = document.getElementById("profile-photo");
     fileUpload.addEventListener(`change`, photoChangeEventHandler)
 }
 

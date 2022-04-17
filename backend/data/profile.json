@@ -1,0 +1,10 @@
+{
+    "first-name" : "Szilvia Ágnes",
+    "last-name" : "Tóth",
+    "street-address" : "53 Bartók Béla street",
+    "zip-code" : 1114,
+    "city-town" : "Budapest",
+    "country-state" : "Hungary",
+    "introduction" : "I am an optimist. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ullam, nesciunt possimus magnam veniam eos iure doloribus maiores cumque temporibus recusandae ipsa qui rerum cupiditate. Nobis sint possimus ab id. Amet rem ullam maiores. Quaerat rem vel sint eius tempora sed, possimus veritatis nemo eos laboriosam atque voluptatem? Est soluta ducimus consequuntur consectetur veritatis? Laudantium dolores quidem sequi voluptatum minima.",
+    "profile-photo" : "/pub/images/profiles/profile.jpg"
+}
