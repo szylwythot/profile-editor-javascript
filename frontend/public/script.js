@@ -131,6 +131,46 @@ async function photoChangeEventHandler(event){
     });
 }
 
+async function saveClickedEventHandler(event){
+    const saveButton = event.target;
+    const formElement = document.getElementById("profile-form");
+    console.log(formElement);
+    
+    // create formdata
+    let formData = new FormData(formElement);
+    const fetchSettings = {
+        method : `POST`,
+        body : formData
+    };
+
+    fetch(`/save`, fetchSettings)
+    .then( async (data) => {
+        if (data.status == 200) {
+            // event.target.outerHTML = "Done";
+
+            const response = await data.json();
+            console.dir(data);
+            const img = document.querySelector(".profile-photo-img");
+            console.log(img);
+            img.src = `upload/${response.pictureName}`;
+            // img.remove();
+            // const photoDiv = imageInput.parentNode;
+            // console.log(photoDiv);
+            // photoDiv.insertAdjacentHTML(`afterbegin`, `<img src="upload/${response.pictureName}" class="profile-photo-img">`)
+            
+            // event.target.outerHTML = `
+            // <img src="upload/${response.pictureName}">
+            // `;
+            // console.dir(data);
+            // ${response.pictureName}
+        }
+    })
+    .catch(error => {
+        event.target.outerHTML = `Error`;
+        console.dir(error);
+    });
+}
+
 function loadEvent(){
     rootElement = document.getElementById("root");
     let innerHtml = `
@@ -148,9 +188,10 @@ function loadEvent(){
     rootElement.insertAdjacentHTML(`beforeend`, innerHtml);
 
     const fileUpload = document.getElementById("profile-photo");
-    // const saveButton = document.querySelector("save");
+    const saveButton = document.querySelector(".save");
     
     fileUpload.addEventListener(`change`, photoChangeEventHandler);
+    saveButton.addEventListener(`click`, saveClickedEventHandler);
 }
 
 window.addEventListener("load", loadEvent);

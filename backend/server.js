@@ -7,6 +7,8 @@ const path = require("path");
 const app = express();
 
 const frondendPath = path.join(`${__dirname}/../frontend`);
+const backendPath = path.join(`${__dirname}/../backend`);
+const profileJson = `${backendPath}/data/profile.json`;
 
 app.use(fileUpload());
 
@@ -14,6 +16,7 @@ app.get("/", (request, response) => response.sendFile(`${frondendPath}/index.htm
 
 app.use("/pub", express.static(`${frondendPath}/public`));
 app.use("/upload", express.static(`${frondendPath}/upload`));
+app.use('/profile', express.static(profileJson));
 
 console.log("start");
 
@@ -41,6 +44,19 @@ app.post('/upload', function(request, response) {
     console.log(request.files.picture);
 
     response.send(answer); // itt megy át a response a frontendre!
+});
+
+app.post('/save', function(request, response) {
+    console.log("got request save");
+
+    fs.writeFile(profileJson, JSON.stringify(request.body), error => {
+        if(error) {
+            console.log(error);
+            res.send("Error writing pizza file.");
+        }
+    });
+
+    response.sendFile(`${backendPath}/data/profile.json`); // itt megy át a response a frontendre!
 });
 
 
