@@ -1,5 +1,8 @@
+// let counter = 0;
+
 const express = require("express");
 const fileUpload = require("express-fileupload");
+const fs = require("fs");
 const path = require("path");
 const app = express();
 
@@ -17,22 +20,30 @@ app.use("/upload", express.static(`${__dirname}/../frontend/upload`));
 
 console.log("start");
 
-// const uploads = path.join(`${__dirname}/../frontend/upload/`);
-
 app.post('/upload', function(request, response) {
     let picture = request.files.picture;
-    console.log(picture);
-    // const answer = {};
-    // if(picture){
-    //     console.dir(picture);
-    //     picture.mv(`${uploads}profile.jpg`); //${picture.name}`);
-    // }
+    const answer = {};
+    // let pictureName = `profile${counter}.jpg`;
+    let pictureName = `profile.jpg`;
+    if(picture){
+        console.dir(picture);
+        // fs.rmdir(dir, { recursive: true }, (err) => {
+        //     if (err) {
+        //         throw err;
+        //     }
+        
+        //     console.log(`${dir} is deleted!`);
+        // });
+        // fs.unlinkSync(`${frondendPath}upload/${pictureName}`);
+        // pictureName = `profile${counter++}.jpg`;
+        picture.mv(`${frondendPath}upload/${pictureName}`); //${picture.name}`);
+    }
     
-    // answer.pictureName = "profile.jpg"; //picture.name;
-    // console.log("start upload");
-    // console.log(request.files.picture);
+    answer.pictureName = pictureName; //picture.name;
+    console.log("start upload");
+    console.log(request.files.picture);
 
-    // response.send(answer); // itt megy át a response a frontendre!
+    response.send(answer); // itt megy át a response a frontendre!
   });
 
 const port = 9004;

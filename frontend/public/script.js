@@ -65,7 +65,7 @@ const contentBox = (contentTitle, inputDataFun, additionalClassName, additionalH
 const profilePhoto = function () {
     return `
     <div class="profile-photo">
-        <img src="/pub/images/profiles/profile.jpg" alt="" >
+        <img src="/pub/images/profiles/profile.jpg" class="profile-photo-img">
         <label for="change-photo" class="change-photo-label">
             <i class="fa fa-cloud-upload"></i> Change profile photo
         </label>
@@ -89,22 +89,46 @@ const textareaContent = (contentTitle) => {
 }
 
 // eventhandlers
-function photoChangeEventHandler(event){
+async function photoChangeEventHandler(event){
     const imageInput = event.target;
-    const imageFile = imageInput.files[0];
-    console.log(imageFile);
+    // const imageFile = imageInput.files[0];
+    // console.log(imageFile);
 
-    const postData = { // Your POST endpoint
-        method: 'POST',
-        // headers: {
-        //   // Content-Type may need to be completely **omitted**
-        //   // or you may need something
-        //   "Content-Type": "You will perhaps need to define a content-type here"
-        // },
-        body: imageFile // This is your file object
-      };
+     // create formdata
+     const formData = new FormData();
+     formData.append(`picture`, imageInput.files[0]); 
 
-    fetch('/upload', postData);
+     const fetchSettings = {
+         method : `POST`,
+         body : formData
+     };
+
+    fetch(`/upload`, fetchSettings)
+    .then( async (data) => {
+        if (data.status == 200) {
+            // event.target.outerHTML = "Done";
+
+            const response = await data.json();
+            console.dir(data);
+            const img = document.querySelector(".profile-photo-img");
+            console.log(img);
+            img.src = `upload/${response.pictureName}`;
+            // img.remove();
+            // const photoDiv = imageInput.parentNode;
+            // console.log(photoDiv);
+            // photoDiv.insertAdjacentHTML(`afterbegin`, `<img src="upload/${response.pictureName}" class="profile-photo-img">`)
+            
+            // event.target.outerHTML = `
+            // <img src="upload/${response.pictureName}">
+            // `;
+            // console.dir(data);
+            // ${response.pictureName}
+        }
+    })
+    .catch(error => {
+        event.target.outerHTML = `Error`;
+        console.dir(error);
+    });
 }
 
 function loadEvent(){
