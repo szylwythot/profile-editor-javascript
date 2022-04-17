@@ -41,7 +41,9 @@ app.post('/upload', function(request, response) {
     console.log(request.files.picture);
 
     response.send(answer); // itt megy át a response a frontendre!
-  });
+});
+
+
 
 const port = 9004;
 const ipAddress = `http://127.0.0.4:${port}`
