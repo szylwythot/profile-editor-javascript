@@ -262,12 +262,12 @@ body{
     font-weight: 500;
 }
 
-#root div.action-buttons button.delete{
+#root div.action-buttons button.save{
     background-color: #006F49;
     color:#ffffff;
 }
 
-#root div.action-buttons button.save{
+#root div.action-buttons button.delete{
     background-color: #ffffff;
 }
 

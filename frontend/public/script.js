@@ -139,8 +139,8 @@ function loadEvent(){
         ${rightContent()}
     </form>
     <div class="action-buttons">
-        <button class="save">Delete</button>
-        <button class="delete">Save</button>
+        <button class="delete">Delete</button>
+        <button class="save">Save</button>
         <!-- <input type="submit" value="Save"> -->
     </div>
     `;
@@ -148,7 +148,9 @@ function loadEvent(){
     rootElement.insertAdjacentHTML(`beforeend`, innerHtml);
 
     const fileUpload = document.getElementById("profile-photo");
-    fileUpload.addEventListener(`change`, photoChangeEventHandler)
+    // const saveButton = document.querySelector("save");
+    
+    fileUpload.addEventListener(`change`, photoChangeEventHandler);
 }
 
 window.addEventListener("load", loadEvent);
