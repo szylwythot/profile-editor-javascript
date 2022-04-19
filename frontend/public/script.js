@@ -5,21 +5,24 @@ function makeCapital(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-function TextData(title, label, placeholder, value){
-    this.title = title;
-    this.label = label;
-    this.placeholder = placeholder;
-    this.value = value;
-    this.textInput = function (){
-        return `
-        <div class="${this.title} input-data">
-            <p>
-                <label for="${this.title}">${this.label}</label>
-            </p>
-            <input type="text" placeholder="${this.placeholder}" id="${this.title}" name="${this.title}" value="${value}">
-        </div>
-        `;
+class TextData {
+    constructor(title, label, placeholder, value) {
+        this.title = title;
+        this.label = label;
+        this.placeholder = placeholder;
+        this.value = value;
     }
+
+    textInput() {
+        return `
+            <div class="${this.title} input-data">
+                <p>
+                    <label for="${this.title}">${this.label}</label>
+                </p>
+                <input type="text" placeholder="${this.placeholder}" id="${this.title}" name="${this.title}" value="${this.value}">
+            </div>
+        `;
+    };
 }
 
 
