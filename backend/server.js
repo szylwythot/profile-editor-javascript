@@ -58,7 +58,7 @@ app.post('/save', function(request, response) {
         }
     });
 
-    response.send(`succeed`); // itt megy át a response a frontendre!
+    res.send({"saved": true});
 });
 
 

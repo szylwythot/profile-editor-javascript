@@ -5,56 +5,64 @@ function makeCapital(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-function TextData(title, label, placeholder){
+function TextData(title, label, placeholder, value){
     this.title = title;
     this.label = label;
     this.placeholder = placeholder;
+    this.value = value;
     this.textInput = function (){
         return `
         <div class="${this.title} input-data">
             <p>
                 <label for="${this.title}">${this.label}</label>
             </p>
-            <input type="text" placeholder="${this.placeholder}" id="${this.title}" name="${this.title}">
+            <input type="text" placeholder="${this.placeholder}" id="${this.title}" name="${this.title}" value="${value}">
         </div>
         `;
     }
 }
 
-let personalInputs = [
-    new TextData("first-name", "First name", "Szilvia Ágnes"),
-    new TextData("last-name", "Last name", "Tóth"),
-    new TextData("street-address", "Street address", "Bartók Béla út 53"),
-    new TextData("zip-code ", "Zip code ", "1114"),
-    new TextData("city-town", "City / town", "Budapest"),
-    new TextData("country-state", "Country / state", "Hungary")
-];
 
-const personalInputDataHtml = () => {
-    return personalInputs.map((data) => data.textInput()).join("");
+
+const personalInputs = ({firstName, lastName, streetAddress, zipCode, cityTown, countryState}) => {
+    console.log(firstName);
+    return [
+        new TextData("firstName", "First name", "First name", firstName),
+        new TextData("lastName", "Last name", "Last name", lastName),
+        new TextData("streetAddress", "Street address", streetAddress),
+        new TextData("zipCode", "Zip code", "Zip code", zipCode),
+        new TextData("cityTown", "City / town", "City / town", cityTown),
+        new TextData("countryState", "Country / state", "Country / state", countryState)
+    ];
 }
 
-const leftContent = () => {
+const personalInputDataHtml = (profileData) => {
+    console.log(profileData);
+    let profileDataTextObjects = personalInputs(profileData);
+    return profileDataTextObjects.map((data) => data.textInput()).join("");
+}
+
+const leftContent = (profileData) => {
     return `
     <div class="left-content">
         <h1>Profile editor</h1>
-        ${contentBox("introduction", textareaContent, "", "")}
+        ${contentBox("introduction", textareaContent, profileData, "", "")}
     </div>
     `;
 }
 
-const rightContent = () => {
-    return contentBox("personal", personalInputDataHtml, "right-content", profilePhoto());
+const rightContent = (profileData) => {
+    return contentBox("personal", personalInputDataHtml, profileData, "right-content", profilePhoto());
 }
 
-const contentBox = (contentTitle, inputDataFun, additionalClassName, additionalHtml) => {
+const contentBox = (contentTitle, inputDataFun, profileData, additionalClassName, additionalHtml) => {
     return `
     <div class="${contentTitle}-box content-box ${additionalClassName}">
         <div class="cover">
             <h2>${makeCapital(contentTitle)}</h2>
         </div>
         <div class="${contentTitle}-data-container input-data-container">
-            ${inputDataFun(contentTitle)}
+            ${inputDataFun(profileData, contentTitle)}
         </div>
         ${additionalHtml}
     </div>
@@ -74,15 +82,14 @@ const profilePhoto = function () {
         `;
     }
 
-const textareaContent = (contentTitle) => {
+const textareaContent = (profileData, contentTitle) => {
     return `
     <div class="${contentTitle} input-data">
         <p>
             <label for="${contentTitle}">${makeCapital(contentTitle)}</label>
         </p>
         <!-- rows="10" cols="50" -->
-        <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis ullam, nesciunt possimus magnam veniam eos iure doloribus maiores cumque temporibus recusandae ipsa qui rerum cupiditate. Nobis sint possimus ab id. Amet rem ullam maiores. Quaerat rem vel sint eius tempora sed, possimus veritatis nemo eos laboriosam atque voluptatem? Est soluta ducimus consequuntur consectetur veritatis? Laudantium dolores quidem sequi voluptatum minima.
-        </textarea>
+        <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}">${profileData.introduction}</textarea>
     </div>
     `;
 }
@@ -148,20 +155,11 @@ async function saveClickedEventHandler(event){
             // event.target.outerHTML = "Done";
 
             const response = await data.json();
-            console.dir(data);
-            const img = document.querySelector(".profile-photo-img");
-            console.log(img);
-            img.src = `upload/${response.pictureName}`;
-            // img.remove();
-            // const photoDiv = imageInput.parentNode;
-            // console.log(photoDiv);
-            // photoDiv.insertAdjacentHTML(`afterbegin`, `<img src="upload/${response.pictureName}" class="profile-photo-img">`)
-            
-            // event.target.outerHTML = `
-            // <img src="upload/${response.pictureName}">
-            // `;
-            // console.dir(data);
-            // ${response.pictureName}
+            console.log(response);
+
+
+            // újra renderelés
+            // reloadPizzas();
         }
     })
     .catch(error => {
@@ -170,21 +168,34 @@ async function saveClickedEventHandler(event){
     });
 }
 
-function loadEvent(){
-    rootElement = document.getElementById("root");
-    let innerHtml = `
+let innerHtml = (profileData) => { return `
     <form action="" id="profile-form">
-        ${leftContent()}
-        ${rightContent()}
+        ${rightContent(profileData)}
+        ${leftContent(profileData)}
     </form>
     <div class="action-buttons">
         <button class="delete">Delete</button>
         <button class="save">Save</button>
         <!-- <input type="submit" value="Save"> -->
     </div>
-    `;
+    `
+};
 
-    rootElement.insertAdjacentHTML(`beforeend`, innerHtml);
+// FETCH URL - RETURN JSON
+const getData = async (url, method = "get") => {
+    const request = await fetch(url, {method: method});
+    const result = await request.json();
+    return result;
+};
+
+async function loadEvent(){
+    rootElement = document.getElementById("root");
+    
+    // fetch data
+    const profileData = await getData('/profile');
+    // console.log(profileData);
+
+    rootElement.insertAdjacentHTML(`beforeend`, innerHtml(profileData));
 
     const fileUpload = document.getElementById("profile-photo");
     const saveButton = document.querySelector(".save");
