@@ -25,10 +25,7 @@ class TextData {
     };
 }
 
-
-
 const personalInputs = ({firstName, lastName, streetAddress, zipCode, cityTown, countryState}) => {
-    console.log(firstName);
     return [
         new TextData("firstName", "First name", "First name", firstName),
         new TextData("lastName", "Last name", "Last name", lastName),
