@@ -25,7 +25,13 @@ class TextData {
     };
 }
 
-const personalInputs = ({firstName, lastName, streetAddress, zipCode, cityTown, countryState}) => {
+const personalInputs = (profileData) => {
+    let {firstName, lastName, streetAddress, zipCode, cityTown, countryState} = profileData;
+
+    if((Array.isArray(profileData) && profileData.length === 0) || profileData === undefined || profileData === null){
+        [firstName, lastName, streetAddress, zipCode, cityTown, countryState] = ["", "", "", "", "", ""];
+    }
+
     return [
         new TextData("firstName", "First name", "First name", firstName),
         new TextData("lastName", "Last name", "Last name", lastName),
@@ -37,7 +43,6 @@ const personalInputs = ({firstName, lastName, streetAddress, zipCode, cityTown, 
 }
 
 const personalInputDataHtml = (profileData) => {
-    console.log(profileData);
     let profileDataTextObjects = personalInputs(profileData);
     return profileDataTextObjects.map((data) => data.textInput()).join("");
 }
@@ -83,13 +88,14 @@ const profilePhoto = function () {
     }
 
 const textareaContent = (profileData, contentTitle) => {
+    let introduction = profileData === {} ? "" : profileData.introduction;
     return `
     <div class="${contentTitle} input-data">
         <p>
             <label for="${contentTitle}">${makeCapital(contentTitle)}</label>
         </p>
         <!-- rows="10" cols="50" -->
-        <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}">${profileData.introduction}</textarea>
+        <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}">${introduction}</textarea>
     </div>
     `;
 }
@@ -98,7 +104,6 @@ const textareaContent = (profileData, contentTitle) => {
 async function photoChangeEventHandler(event){
     const imageInput = event.target;
     // const imageFile = imageInput.files[0];
-    // console.log(imageFile);
 
      // create formdata
      const formData = new FormData();
@@ -117,7 +122,7 @@ async function photoChangeEventHandler(event){
             const response = await data.json();
             console.dir(data);
             const img = document.querySelector(".profile-photo-img");
-            console.log(img);
+            // console.log(img);
             img.src = `upload/${response.pictureName}`;
             // img.remove();
             // const photoDiv = imageInput.parentNode;
@@ -137,8 +142,20 @@ async function photoChangeEventHandler(event){
     });
 }
 
+async function deleteClickedEventHandler(event){
+    const response = await getData("profile", "delete");
+
+    if(response.deleted === true) {
+        const formElement = document.getElementById("profile-form");
+        formElement.remove();
+        const profileData = {};
+        rootElement.insertAdjacentHTML(`afterbegin`, formHtml(profileData));
+        const fileUpload = document.getElementById("profile-photo");
+        fileUpload.addEventListener(`change`, photoChangeEventHandler);
+    }
+}
+
 async function saveClickedEventHandler(event){
-    const saveButton = event.target;
     const formElement = document.getElementById("profile-form");
     console.log(formElement);
     
@@ -155,11 +172,13 @@ async function saveClickedEventHandler(event){
             // event.target.outerHTML = "Done";
 
             const response = await data.json();
-            console.log(response);
-
-
-            // újra renderelés
-            // reloadPizzas();
+            if(response.saved === true){
+                formElement.remove();
+                const profileData = await getData('/profile');
+                rootElement.insertAdjacentHTML(`afterbegin`, formHtml(profileData));
+                const fileUpload = document.getElementById("profile-photo");
+                fileUpload.addEventListener(`change`, photoChangeEventHandler);
+            }
         }
     })
     .catch(error => {
@@ -168,11 +187,17 @@ async function saveClickedEventHandler(event){
     });
 }
 
-let innerHtml = (profileData) => { return `
-    <form action="" id="profile-form">
-        ${rightContent(profileData)}
-        ${leftContent(profileData)}
-    </form>
+const formHtml = (profileData) =>{
+    return `
+        <form action="" id="profile-form">
+            ${rightContent(profileData)}
+            ${leftContent(profileData)}
+        </form>
+    `;
+};
+
+const innerHtml = (profileData) => { return `
+    ${formHtml(profileData)}
     <div class="action-buttons">
         <button class="delete">Delete</button>
         <button class="save">Save</button>
@@ -193,15 +218,16 @@ async function loadEvent(){
     
     // fetch data
     const profileData = await getData('/profile');
-    // console.log(profileData);
 
     rootElement.insertAdjacentHTML(`beforeend`, innerHtml(profileData));
 
     const fileUpload = document.getElementById("profile-photo");
     const saveButton = document.querySelector(".save");
+    const deleteButton = document.querySelector(".delete");
     
     fileUpload.addEventListener(`change`, photoChangeEventHandler);
     saveButton.addEventListener(`click`, saveClickedEventHandler);
+    deleteButton.addEventListener(`click`, deleteClickedEventHandler);
 }
 
 window.addEventListener("load", loadEvent);
