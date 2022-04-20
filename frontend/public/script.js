@@ -35,7 +35,7 @@ const personalInputs = (profileData) => {
     return [
         new TextData("firstName", "First name", "First name", firstName),
         new TextData("lastName", "Last name", "Last name", lastName),
-        new TextData("streetAddress", "Street address", "Street address", lastName),
+        new TextData("streetAddress", "Street address", "Street address", streetAddress),
         new TextData("zipCode", "Zip code", "Zip code", zipCode),
         new TextData("cityTown", "City / town", "City / town", cityTown),
         new TextData("countryState", "Country / state", "Country / state", countryState)
