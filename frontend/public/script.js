@@ -6,7 +6,7 @@ function makeCapital(text) {
 }
 
 class TextData {
-    constructor(title, label, placeholder, value) {
+    constructor(title, label, placeholder, value) { // todo: remove parameters, and refact
         this.title = title;
         this.label = label;
         this.placeholder = placeholder;
@@ -28,14 +28,14 @@ class TextData {
 const personalInputs = (profileData) => {
     let {firstName, lastName, streetAddress, zipCode, cityTown, countryState} = profileData;
 
-    if((Array.isArray(profileData) && profileData.length === 0) || profileData === undefined || profileData === null){
+    if((Array.isArray(profileData) && profileData.length === 0) || profileData === undefined || profileData === null ){
         [firstName, lastName, streetAddress, zipCode, cityTown, countryState] = ["", "", "", "", "", ""];
     }
 
     return [
         new TextData("firstName", "First name", "First name", firstName),
         new TextData("lastName", "Last name", "Last name", lastName),
-        new TextData("streetAddress", "Street address", streetAddress),
+        new TextData("streetAddress", "Street address", "Street address", lastName),
         new TextData("zipCode", "Zip code", "Zip code", zipCode),
         new TextData("cityTown", "City / town", "City / town", cityTown),
         new TextData("countryState", "Country / state", "Country / state", countryState)
@@ -148,8 +148,9 @@ async function deleteClickedEventHandler(event){
     if(response.deleted === true) {
         const formElement = document.getElementById("profile-form");
         formElement.remove();
-        const profileData = {};
+        const profileData = [];
         rootElement.insertAdjacentHTML(`afterbegin`, formHtml(profileData));
+        
         const fileUpload = document.getElementById("profile-photo");
         fileUpload.addEventListener(`change`, photoChangeEventHandler);
     }

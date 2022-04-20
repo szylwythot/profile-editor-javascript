@@ -54,11 +54,30 @@ app.post('/save', function(request, response) {
     fs.writeFile(profileJson, profileData, error => {
         if(error) {
             console.log(error);
-            res.send("Error writing pizza file.");
+            res.send("Error profile.json file.");
         }
     });
 
-    res.send({"saved": true});
+    response.send({"saved": true});
+});
+
+app.delete('/profile', function(request, response) {
+    console.log("got request save");
+    // let profileData = JSON.stringify(request.body);
+    // console.log(profileData);
+    
+    // let entries = Object.entries(profileData).map(data=>data='');
+    // console.log("entries" + entries);
+
+
+    fs.writeFile(profileJson, "[]", error => {
+        if(error) {
+            console.log(error);
+            res.send("Error profile.json file.");
+        }
+    });
+
+    response.send({"deleted": true});
 });
 
 
