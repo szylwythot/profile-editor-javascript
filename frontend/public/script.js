@@ -88,15 +88,15 @@ const profilePhoto = function () {
     }
 
 const textareaContent = (profileData, contentTitle) => {
-    console.log(profileData.introduction);
-    let introduction = typeof profileData === undefined ? "" : profileData.introduction;
-    console.log(introduction);
+    // console.log(profileData.introduction);
+    // let introduction = typeof profileData === undefined ? "" : profileData.introduction;
+    // console.log(introduction);
     return `
     <div class="${contentTitle} input-data">
         <p>
             <label for="${contentTitle}">${makeCapital(contentTitle)}</label>
         </p>
-        <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}">${introduction}</textarea>
+        <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}" placeholder="${contentTitle}">${profileData.introduction}</textarea>
     </div>
     `;
 }
@@ -215,24 +215,37 @@ const getData = async (url, method = "get") => {
     return result;
 };
 
+function ProfileData(firstName, lastName, streetAddress, zipCode, cityTown, countryState, introduction) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.streetAddress = streetAddress;
+    this.zipCode = zipCode;
+    this.cityTown = cityTown;
+    this.countryState = countryState;
+    this.introduction = introduction;
+}
+
 // prepare data
-const prepareData =  (profileData) => {
-    let {firstName, lastName, streetAddress, zipCode, cityTown, countryState, introduction} = profileData;
+const prepareData =  (data) => {
+    let profileData =  new ProfileData("", "", "", "", "", "", "");
 
-    // create new profiledata, map on keys and check
+    Object.keys(profileData).map((key) => {
+        let dataValue = data[key];
+        if(dataValue !== (undefined || null || "undefined")){
+            profileData[key] = dataValue;
+        }
+    });
 
-    
-    if((Array.isArray(profileData) && profileData.length === 0) || profileData === undefined || profileData === null ){
-        [firstName, lastName, streetAddress, zipCode, cityTown, countryState, introduction] = ["", "", "", "", "", ""];
-    }
+    return profileData;
 
 };
 
 async function loadEvent(){
     rootElement = document.getElementById("root");
     
-    // fetch data
+    // fetch and prepare data
     const profileData = await getData('/profile');
+    profileData = prepareData(profileData);
 
     rootElement.insertAdjacentHTML(`beforeend`, innerHtml(profileData));
 
