@@ -96,7 +96,7 @@ const textareaContent = (profileData, contentTitle) => {
         <p>
             <label for="${contentTitle}">${makeCapital(contentTitle)}</label>
         </p>
-        <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}" placeholder="${contentTitle}">${profileData.introduction}</textarea>
+        <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}" placeholder="${makeCapital(contentTitle)}">${profileData.introduction}</textarea>
     </div>
     `;
 }
@@ -229,12 +229,16 @@ function ProfileData(firstName, lastName, streetAddress, zipCode, cityTown, coun
 const prepareData =  (data) => {
     let profileData =  new ProfileData("", "", "", "", "", "", "");
 
-    Object.keys(profileData).map((key) => {
-        let dataValue = data[key];
-        if(dataValue !== (undefined || null || "undefined")){
-            profileData[key] = dataValue;
+    if(Array.isArray(data)){
+        if(data.length > 0){
+            data = data[0];
+            Object.keys(profileData).map((key) => {
+                if(data[key] !== (undefined || null || "undefined")){
+                    profileData[key] = data[key];
+                }
+            });
         }
-    });
+    }
 
     return profileData;
 
