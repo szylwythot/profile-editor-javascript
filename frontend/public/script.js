@@ -244,7 +244,7 @@ async function loadEvent(){
     rootElement = document.getElementById("root");
     
     // fetch and prepare data
-    const profileData = await getData('/profile');
+    let profileData = await getData('/profile');
     profileData = prepareData(profileData);
 
     rootElement.insertAdjacentHTML(`beforeend`, innerHtml(profileData));
