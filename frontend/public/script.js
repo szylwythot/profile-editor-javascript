@@ -88,13 +88,14 @@ const profilePhoto = function () {
     }
 
 const textareaContent = (profileData, contentTitle) => {
-    let introduction = profileData === {} ? "" : profileData.introduction;
+    console.log(profileData.introduction);
+    let introduction = typeof profileData === undefined ? "" : profileData.introduction;
+    console.log(introduction);
     return `
     <div class="${contentTitle} input-data">
         <p>
             <label for="${contentTitle}">${makeCapital(contentTitle)}</label>
         </p>
-        <!-- rows="10" cols="50" -->
         <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}">${introduction}</textarea>
     </div>
     `;
@@ -212,6 +213,19 @@ const getData = async (url, method = "get") => {
     const request = await fetch(url, {method: method});
     const result = await request.json();
     return result;
+};
+
+// prepare data
+const prepareData =  (profileData) => {
+    let {firstName, lastName, streetAddress, zipCode, cityTown, countryState, introduction} = profileData;
+
+    // create new profiledata, map on keys and check
+
+    
+    if((Array.isArray(profileData) && profileData.length === 0) || profileData === undefined || profileData === null ){
+        [firstName, lastName, streetAddress, zipCode, cityTown, countryState, introduction] = ["", "", "", "", "", ""];
+    }
+
 };
 
 async function loadEvent(){
