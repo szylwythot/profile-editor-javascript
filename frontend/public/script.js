@@ -149,7 +149,7 @@ async function deleteClickedEventHandler(event){
     if(response.deleted === true) {
         const formElement = document.getElementById("profile-form");
         formElement.remove();
-        const profileData = [];
+        const profileData = prepareData({});
         rootElement.insertAdjacentHTML(`afterbegin`, formHtml(profileData));
         
         const fileUpload = document.getElementById("profile-photo");
