@@ -229,19 +229,15 @@ function ProfileData(firstName, lastName, streetAddress, zipCode, cityTown, coun
 const prepareData =  (data) => {
     let profileData =  new ProfileData("", "", "", "", "", "", "");
 
-    if(Array.isArray(data)){
-        if(data.length > 0){
-            data = data[0];
-            Object.keys(profileData).map((key) => {
-                if(data[key] !== (undefined || null || "undefined")){
-                    profileData[key] = data[key];
-                }
-            });
-        }
+    if(JSON.stringify(data) !== '{}'){
+        Object.keys(profileData).map((key) => {
+            if(data[key] !== (undefined || null || "undefined")){
+                profileData[key] = data[key];
+            }
+        });
     }
 
     return profileData;
-
 };
 
 async function loadEvent(){
