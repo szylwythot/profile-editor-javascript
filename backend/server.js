@@ -70,7 +70,7 @@ app.delete('/profile', function(request, response) {
     // console.log("entries" + entries);
 
 
-    fs.writeFile(profileJson, "[]", error => {
+    fs.writeFile(profileJson, "{}", error => {
         if(error) {
             console.log(error);
             res.send("Error profile.json file.");
