@@ -57,7 +57,7 @@ const leftContent = (profileData) => {
 }
 
 const rightContent = (profileData) => {
-    return contentBox("personal", personalInputDataHtml, profileData, "right-content", profilePhoto());
+    return contentBox("personal", personalInputDataHtml, profileData, "right-content", profilePhoto("upload/profile.jpg"));
 }
 
 const contentBox = (contentTitle, inputDataFun, profileData, additionalClassName, additionalHtml) => {
@@ -75,10 +75,10 @@ const contentBox = (contentTitle, inputDataFun, profileData, additionalClassName
 
 }
 
-const profilePhoto = function () {
+const profilePhoto = function (imgUrl) {
     return `
     <div class="profile-photo">
-        <img src="/pub/images/profiles/profile.jpg" class="profile-photo-img">
+        <img src="${imgUrl}" class="profile-photo-img">
         <label for="profile-photo" class="profile-photo-label">
             <i class="fa fa-cloud-upload"></i> Change profile photo
         </label>
@@ -106,14 +106,14 @@ async function photoChangeEventHandler(event){
     const imageInput = event.target;
     // const imageFile = imageInput.files[0];
 
-     // create formdata
-     const formData = new FormData();
-     formData.append(`picture`, imageInput.files[0]); 
+    // create formdata
+    const formData = new FormData();
+    formData.append(`picture`, imageInput.files[0]);
 
-     const fetchSettings = {
-         method : `POST`,
-         body : formData
-     };
+    const fetchSettings = {
+        method : `POST`,
+        body : formData
+    };
 
     fetch(`/upload`, fetchSettings)
     .then( async (data) => {
