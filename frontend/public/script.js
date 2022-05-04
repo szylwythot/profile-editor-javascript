@@ -88,9 +88,6 @@ const profilePhoto = function (imgUrl) {
     }
 
 const textareaContent = (profileData, contentTitle) => {
-    // console.log(profileData.introduction);
-    // let introduction = typeof profileData === undefined ? "" : profileData.introduction;
-    // console.log(introduction);
     return `
     <div class="${contentTitle} input-data">
         <p>
@@ -99,6 +96,17 @@ const textareaContent = (profileData, contentTitle) => {
         <textarea  maxlength="150" name="${contentTitle}" form="profile-form" id="${contentTitle}" placeholder="${makeCapital(contentTitle)}">${profileData.introduction}</textarea>
     </div>
     `;
+}
+
+const refreshImage = (imgElement, imgURL) => {
+    // create a new timestamp 
+    var timestamp = new Date().getTime();
+  
+    var element = document.querySelector(imgElement);
+  
+    var queryString = "?t=" + timestamp;
+   
+    element.src = imgURL + queryString;
 }
 
 // eventhandlers
@@ -118,23 +126,8 @@ async function photoChangeEventHandler(event){
     fetch(`/upload`, fetchSettings)
     .then( async (data) => {
         if (data.status == 200) {
-            // event.target.outerHTML = "Done";
-
-            const response = await data.json();
             console.dir(data);
-            const img = document.querySelector(".profile-photo-img");
-            // console.log(img);
-            img.src = `upload/${response.pictureName}`;
-            // img.remove();
-            // const photoDiv = imageInput.parentNode;
-            // console.log(photoDiv);
-            // photoDiv.insertAdjacentHTML(`afterbegin`, `<img src="upload/${response.pictureName}" class="profile-photo-img">`)
-            
-            // event.target.outerHTML = `
-            // <img src="upload/${response.pictureName}">
-            // `;
-            // console.dir(data);
-            // ${response.pictureName}
+            refreshImage(".profile-photo-img", "upload/profile.jpg");
         }
     })
     .catch(error => {
