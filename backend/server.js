@@ -43,7 +43,7 @@ app.post('/upload', function(request, response) {
     console.log("start upload");
     console.log(request.files.picture);
 
-    response.send(answer); // itt megy át a response a frontendre!
+    response.send(answer); 
 });
 
 app.post('/save', function(request, response) {
@@ -61,7 +61,7 @@ app.post('/save', function(request, response) {
     response.send({"saved": true});
 });
 
-app.delete('/profile', function(request, response) {
+app.delete('/profile/', function(request, response) {
     console.log("got request save");
     // let profileData = JSON.stringify(request.body);
     // console.log(profileData);
