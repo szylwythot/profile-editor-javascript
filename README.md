@@ -1,9 +1,14 @@
-# Pretty Simple Web server written in Node.js
+This is a basic profile editor to practice design ui in figma, implement frontend with vanilla js and css, and to write backend server with node.js.
 
-You can use this repository as a template for your repository or copy the files into your repository manually
+figma design:
+https://www.figma.com/file/2P7UsyGeKNuI1DWUzkGITB/Profile-editor?node-id=0%3A1
 
-1. Open a new terminal (eg. in VS Code when your repository's directory opened)
-2. Run with the following command: `node backend/server.js` (Make sure that you are in the right directory.)
-3. If you don't need it stop it with `Control + C` keycommand.
+You can run it by:
 
-You can write your frontend code (`HTML, CSS, JS`) into the `frontend` directory.
+```
+cd frontend
+
+npm install
+
+npm start
+```
